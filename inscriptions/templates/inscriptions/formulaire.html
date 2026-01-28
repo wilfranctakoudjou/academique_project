@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Emmergence Académique</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+        h2 { color: #2c3e50; text-align: center; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+        h3 { color: #e67e22; font-size: 1.1em; margin-top: 20px; }
+        input, select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        .payment-box { background: #fff3e0; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; }
+        button { width: 100%; background: #27ae60; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #219150; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>EMMERGENCE ACADEMIQUE</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <h3>Étape 1 : Informations</h3>
+        <input type="text" name="nom_parent" placeholder="Nom complet du Parent" required>
+        <input type="email" name="email_parent" placeholder="Email du Parent" required>
+        <input type="text" name="tel_parent" placeholder="Téléphone (WhatsApp)" required>
+        <input type="text" name="nom_eleve" placeholder="Nom complet de l'élève" required>
+        
+        <label>Domaine de formation :</label>
+        <select name="formation">
+            <option value="SEC_BUR">Secrétariat Bureautique et Maintenance</option>
+            <option value="INFOG">Infographie et Motion Design</option>
+            <option value="DEV_WEB">Développement Web et Mobile</option>
+            <option value="IA_SYS">IA et Système Intelligent</option>
+        </select>
+
+        <h3>Étape 2 : Paiement</h3>
+        <div class="payment-box">
+            <p>Veuillez effectuer le dépôt au numéro suivant :<br>
+            <strong>Orange/MoMo : +237 696 86 42 80</strong><br>
+            Nom : DJEUTSOP SIMON</p>
+        </div>
+        
+        <label>Capture d'écran du reçu de dépôt :</label>
+        <input type="file" name="capture_paiement" accept="image/*" required>
+
+        <p style="font-size: 0.8em; color: #666;">En cliquant sur le bouton, vous serez redirigé vers WhatsApp pour finaliser avec le responsable.</p>
+        
+        <button type="submit">S'inscrire et Valider</button>
+    </form>
+</div>
+
+</body>
+</html>
